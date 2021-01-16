@@ -79,15 +79,7 @@ Circle::Circle() {
 	_Radius = 0.0;
 }
 
-void testRendering(vector<Shape*> S, SDL_Renderer* renderer) {//where should the pointer be?????????
-	for (auto x : S) {
-		x->render(renderer);
-	}
-	//int size = S->size();
-	//for (int x = 0; x < size; x++) {
-		//S[x]->render();
-	//}
-}
+
 
 //int main(int argc, char* argv[]) {
 //	vector<Shape*> S;

@@ -1,7 +1,18 @@
 #define SDL_MAIN_HANDLED
-#include "task1.cpp"
+#include "task1.h"
 #include <time.h>
 #include <cstdlib>
+
+
+void testRendering(vector<Shape*> S, SDL_Renderer* renderer) {//where should the pointer be?????????
+	for (auto x : S) {
+		x->render(renderer);
+	}
+	//int size = S->size();
+	//for (int x = 0; x < size; x++) {
+		//S[x]->render();
+	//}
+}
 
 
 int main(int argc, char* args[]) {
@@ -37,44 +48,44 @@ int main(int argc, char* args[]) {
 			switch (event.key.keysym.sym) {
 			case SDLK_c: {
 				Circle third;
-				third.SetRadius(rand() % 10);
+				third.SetRadius((rand() % 200)+1);
 				Shape* Sthird = &third;
 				Sthird->SetR(rand() % 255);
 				Sthird->SetG(rand() % 255);
 				Sthird->SetB(rand() % 255);
 				Sthird->SetAlpha(rand() % 255);
-				Sthird->_Point2D._x = rand() % 10;
-				Sthird->_Point2D._y = rand() % 10;
+				Sthird->_Point2D._x = rand() % 200;
+				Sthird->_Point2D._y = rand() % 200;
 				S.push_back(Sthird);
 			}
 				
 			
 			case SDLK_r: {
 				Rectangle first;
-				first.SetHeight(rand() % 5);
-				first.SetWidth(rand() % 5);
+				first.SetHeight((rand() % 200)+1);
+				first.SetWidth((rand() % 200)+1);
 				Shape* Sfirst = &first;
 				Sfirst->SetR(rand() % 255);
 				Sfirst->SetG(rand() % 255);
 				Sfirst->SetB(rand() % 255);
 				Sfirst->SetAlpha(rand() % 255);
-				Sfirst->_Point2D._x = rand() % 5;
-				Sfirst->_Point2D._y = rand() % 5;
+				Sfirst->_Point2D._x = rand() % 200;
+				Sfirst->_Point2D._y = rand() % 200;
 				S.push_back(Sfirst);
 			}
 				
 
 			case SDLK_t: {
 				Triangle second;
-				second.SetBase(rand() % 5);
-				second.SetHeight(rand() % 5);
+				second.SetBase((rand() % 200)+1);
+				second.SetHeight((rand() % 200)+1);
 				Shape* Ssecond = &second;
 				Ssecond->SetR(rand() % 255);
 				Ssecond->SetG(rand() % 255);
 				Ssecond->SetB(rand() % 255);
 				Ssecond->SetAlpha(rand() % 255);
-				Ssecond->_Point2D._x = rand() % 5;
-				Ssecond->_Point2D._y = rand() % 5;
+				Ssecond->_Point2D._x = rand() % 200;
+				Ssecond->_Point2D._y = rand() % 200;
 				S.push_back(Ssecond);
 			}
 				

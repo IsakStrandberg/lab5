@@ -71,10 +71,10 @@ public:
 	}
 
 	virtual void render(SDL_Renderer* renderer) {
-		cout << "RGB+alpha: ";
-		for (int x = 0; x < 4; x++) {
-			cout << _RGB[x] << ",";
-		}
+		//cout << "RGB+alpha: ";
+		//for (int x = 0; x < 4; x++) {
+			//cout << _RGB[x] << ",";
+		//}
 		
 		//SDL_RenderDrawLine(renderer);
 	}
@@ -109,11 +109,12 @@ public:
 
 	virtual void render(SDL_Renderer* renderer) {
 		Shape::render(renderer);//call Shape's render here?
-		cout << "Rectangle " << "x: " << _Point2D._x <<
-			"y: " << _Point2D._y << " " << GetWidth() << " " << GetHeight();
+		/*cout << "Rectangle " << "x: " << _Point2D._x <<
+			"y: " << _Point2D._y << " " << GetWidth() << " " << GetHeight();*/
 
-		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetWidth(), GetHeight());
 		SDL_SetRenderDrawColor(renderer, GetR(), GetG(), GetB(), GetAlpha());
+		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetWidth(), GetHeight());
+		
 	}
 };
 
@@ -144,11 +145,14 @@ public:
 
 	virtual void render(SDL_Renderer* renderer) {
 		Shape::render(renderer);//??this here?
-		cout << "Triangle " << "x: " << _Point2D._x <<
-			"y: " << _Point2D._y << " " << GetBase() << " " << GetHeight();
+		/*cout << "Triangle " << "x: " << _Point2D._x <<
+			"y: " << _Point2D._y << " " << GetBase() << " " << GetHeight();*/
 
-		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetBase(), GetHeight());
 		SDL_SetRenderDrawColor(renderer, GetR(), GetG(), GetB(), GetAlpha());
+		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetBase(), GetHeight());
+		SDL_RenderDrawLine(renderer, GetBase(), _Point2D._y, GetBase(), GetHeight());
+		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetBase(), _Point2D._y);
+		
 	}
 };
 
@@ -172,14 +176,14 @@ public:
 
 	virtual void render(SDL_Renderer* renderer) {
 		Shape::render(renderer);//??this here?
-		cout << "Circle " << "x: " << _Point2D._x <<
-			"y: " << _Point2D._y << " " << GetRadius();
+		/*cout << "Circle " << "x: " << _Point2D._x <<
+			"y: " << _Point2D._y << " " << GetRadius();*/
 
 
-
+		SDL_SetRenderDrawColor(renderer, GetR(), GetG(), GetB(), GetAlpha());
 		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetRadius(), GetRadius());
 		//get radius twice?
-		SDL_SetRenderDrawColor(renderer, GetR(), GetG(), GetB(), GetAlpha());
+		
 	}
 
 };
