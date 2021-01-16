@@ -12,7 +12,7 @@ Point2D::Point2D() {
 
 
 Shape::Shape(Point2D position, int Red, int Green, int Blue, int Alpha) {
-	_Point2D = position;
+	_Point2D = position;//
 	SetR(Red);
 	SetG(Green);
 	SetB(Blue);
