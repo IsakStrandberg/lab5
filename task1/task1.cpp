@@ -1,5 +1,4 @@
 #include "task1.h"
-//#include <SDL.h>//included in h file aswell?
 
 Point2D::Point2D(float x, float y) {
 	_x = x;

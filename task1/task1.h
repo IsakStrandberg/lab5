@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class Point2D {
+class Point2D {//stores x and y coordinates
 public:
 	Point2D();
 	Point2D(float x, float y);
@@ -16,17 +16,17 @@ public:
 };
 
 
-class Shape {
+class Shape {//abstract base class for shapes
 private:
-	int _RGB[4];
+	int _RGB[4];//colours and alpha
 
 public:
 	Shape();
 	Shape(Point2D position, int Red, int Green, int Blue, int Alpha);
 	Point2D _Point2D;
-	int GetRGB() {
+	/*int GetRGB() {
 		return(_RGB[0], _RGB[1], _RGB[2], _RGB[3]);
-	}
+	}*/
 	int GetR() {
 		return(_RGB[0]);
 	}
@@ -72,18 +72,18 @@ public:
 		}
 	}
 
-	virtual void render(SDL_Renderer* renderer) {
+	virtual void render(SDL_Renderer* renderer) {//commented out code on all render
+		//methods so that i dont have to see it constantly write.
 		//cout << "RGB+alpha: ";
 		//for (int x = 0; x < 4; x++) {
 			//cout << _RGB[x] << ",";
 		//}
 		
-		//SDL_RenderDrawLine(renderer);
 	}
 
 };
 
-class Rectangle : public Shape {
+class Rectangle : public Shape {//inherits shape
 private:
 	float _Width;
 	float _Height;
@@ -93,6 +93,7 @@ public:
 	Rectangle(Point2D position,
 		int Red, int Green, int Blue, int Alpha, float Width, float Height) : 
 		Shape(position, Red, Green, Blue, Alpha),_Width(Width), _Height(Height) {};
+	//initialiser list
 
 
 	float GetWidth() {
@@ -110,7 +111,7 @@ public:
 	}
 
 	virtual void render(SDL_Renderer* renderer) {
-		Shape::render(renderer);//call Shape's render here?
+		Shape::render(renderer);
 		/*cout << "Rectangle " << "x: " << _Point2D._x <<
 			"y: " << _Point2D._y << " " << GetWidth() << " " << GetHeight();*/
 
@@ -119,11 +120,12 @@ public:
 		SDL_RenderDrawLine(renderer, _Point2D._x, GetHeight(), GetWidth(), GetHeight());
 		SDL_RenderDrawLine(renderer, GetWidth(), GetHeight(), GetWidth(), _Point2D._y);
 		SDL_RenderDrawLine(renderer, GetWidth(), _Point2D._y, _Point2D._x, _Point2D._y);
+		//draws a rectangle
 		
 	}
 };
 
-class Triangle : public Shape {
+class Triangle : public Shape {// inherits shape
 private:
 	float _Base;
 	float _Height;
@@ -133,6 +135,7 @@ public:
 	Triangle(Point2D position,
 		int Red, int Green, int Blue, int Alpha, float Base, float Height) :
 		Shape(position, Red, Green, Blue, Alpha), _Base(Base), _Height(Height) {};
+	//initialiser list
 
 	float GetBase() {
 		return(_Base);
@@ -149,7 +152,7 @@ public:
 	}
 
 	virtual void render(SDL_Renderer* renderer) {
-		Shape::render(renderer);//??this here?
+		Shape::render(renderer);
 		/*cout << "Triangle " << "x: " << _Point2D._x <<
 			"y: " << _Point2D._y << " " << GetBase() << " " << GetHeight();*/
 
@@ -157,11 +160,12 @@ public:
 		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetBase(), GetHeight());
 		SDL_RenderDrawLine(renderer, GetBase(), _Point2D._y, GetBase(), GetHeight());
 		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetBase(), _Point2D._y);
-		
+		//draws a triangle
+
 	}
 };
 
-class Circle : public Shape {
+class Circle : public Shape {// inherits shape
 private:
 	float _Radius;
 
@@ -170,6 +174,7 @@ public:
 	Circle(Point2D position,
 		int Red, int Green, int Blue, int Alpha, float Radius) :
 		Shape(position, Red, Green, Blue, Alpha), _Radius(Radius) {};
+	//initialiser list
 
 	float GetRadius() {
 		return(_Radius);
@@ -180,7 +185,7 @@ public:
 	}
 
 	virtual void render(SDL_Renderer* renderer) {
-		Shape::render(renderer);//??this here?
+		Shape::render(renderer);
 		/*cout << "Circle " << "x: " << _Point2D._x <<
 			"y: " << _Point2D._y << " " << GetRadius();*/
 
@@ -199,6 +204,7 @@ public:
 			PrevY = _Point2D._y;
 
 		}
+		//draws a circle
 		
 		
 	}

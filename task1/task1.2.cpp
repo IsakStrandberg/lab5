@@ -3,9 +3,9 @@
 
 
 
-void testRendering(vector<Shape*> S, SDL_Renderer* renderer) {//where should the pointer be?????????
+void testRendering(vector<Shape*> S, SDL_Renderer* renderer) {
 	for (auto x : S) {
-		x->render(renderer);
+		x->render(renderer);//calls the specific shapes renderer
 	}
 	//int size = S->size();
 	//for (int x = 0; x < size; x++) {
@@ -15,8 +15,8 @@ void testRendering(vector<Shape*> S, SDL_Renderer* renderer) {//where should the
 
 
 int main(int argc, char* args[]) {
-	vector<Shape*> S;
-	srand(time(NULL));
+	vector<Shape*> S;//vector to contain shapes
+	srand(time(NULL));//uses computers time to randomize numbers
 
 	SDL_Init(SDL_INIT_EVERYTHING);
 	SDL_Window *window = SDL_CreateWindow("le formes", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480,SDL_WINDOW_OPENGL);
