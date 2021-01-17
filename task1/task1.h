@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <SDL.h>
+#include <time.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -113,7 +115,10 @@ public:
 			"y: " << _Point2D._y << " " << GetWidth() << " " << GetHeight();*/
 
 		SDL_SetRenderDrawColor(renderer, GetR(), GetG(), GetB(), GetAlpha());
-		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetWidth(), GetHeight());
+		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, _Point2D._x, GetHeight());
+		SDL_RenderDrawLine(renderer, _Point2D._x, GetHeight(), GetWidth(), GetHeight());
+		SDL_RenderDrawLine(renderer, GetWidth(), GetHeight(), GetWidth(), _Point2D._y);
+		SDL_RenderDrawLine(renderer, GetWidth(), _Point2D._y, _Point2D._x, _Point2D._y);
 		
 	}
 };
@@ -179,10 +184,22 @@ public:
 		/*cout << "Circle " << "x: " << _Point2D._x <<
 			"y: " << _Point2D._y << " " << GetRadius();*/
 
+		int h = 120;
+		int k = 100;
+		int step = 15;
+		int PrevX = _Point2D._x;
+		int PrevY = _Point2D._y;
 
 		SDL_SetRenderDrawColor(renderer, GetR(), GetG(), GetB(), GetAlpha());
-		SDL_RenderDrawLine(renderer, _Point2D._x, _Point2D._y, GetRadius(), GetRadius());
-		//get radius twice?
+		for (int theta = 0; theta <= 360; theta += step) {
+			_Point2D._x = h + GetRadius()*cos((theta * 3.14159)/180);
+			_Point2D._y = k + GetRadius()*sin((theta * 3.14159)/180);
+			SDL_RenderDrawLine(renderer, PrevX, PrevY, _Point2D._x, _Point2D._y);
+			PrevX = _Point2D._x;
+			PrevY = _Point2D._y;
+
+		}
+		
 		
 	}
 

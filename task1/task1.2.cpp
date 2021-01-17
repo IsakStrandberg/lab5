@@ -1,7 +1,6 @@
 #define SDL_MAIN_HANDLED
 #include "task1.h"
-#include <time.h>
-#include <cstdlib>
+
 
 
 void testRendering(vector<Shape*> S, SDL_Renderer* renderer) {//where should the pointer be?????????
@@ -33,7 +32,8 @@ int main(int argc, char* args[]) {
 		return -1;
 	}
 	
-	while (true)
+	bool loop = true;
+	while (loop == true)
 	{
 		SDL_Event event;
 		if (SDL_PollEvent(&event))
@@ -57,6 +57,7 @@ int main(int argc, char* args[]) {
 				Sthird->_Point2D._x = rand() % 200;
 				Sthird->_Point2D._y = rand() % 200;
 				S.push_back(Sthird);
+				break;
 			}
 				
 			
@@ -72,6 +73,7 @@ int main(int argc, char* args[]) {
 				Sfirst->_Point2D._x = rand() % 200;
 				Sfirst->_Point2D._y = rand() % 200;
 				S.push_back(Sfirst);
+				break;
 			}
 				
 
@@ -87,19 +89,22 @@ int main(int argc, char* args[]) {
 				Ssecond->_Point2D._x = rand() % 200;
 				Ssecond->_Point2D._y = rand() % 200;
 				S.push_back(Ssecond);
+				break;
 			}
 				
 			
 			case SDLK_q: 
-			{break; }
+			{loop = false;
+			break; }
 			
 			case SDLK_x: 
-			{S.clear(); }
+			{S.clear();
+			break; }
 			}
 		}
 		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 		SDL_RenderClear(renderer);
-		testRendering(S,renderer);//the correct renderer?
+		testRendering(S,renderer);
 
 		SDL_RenderPresent(renderer);
 	}
